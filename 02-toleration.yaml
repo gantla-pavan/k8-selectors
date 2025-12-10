@@ -8,6 +8,8 @@ metadata:
     purpose: tolerations-demo
     project: roboshop
 spec:
+  node-selector:  
+    kubernetes.io/hostname=ip-192-168-4-212.ec2.internal
   replicas: 1
   selector:
     # these labels are used to select pods
