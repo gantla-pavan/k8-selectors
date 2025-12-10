@@ -22,37 +22,13 @@ spec:
         purpose: tolerations-demo
         project: roboshop
     spec:
-    node-selector:  
-      kubernetes.io/hostname: ip-192-168-4-212.ec2.internal
-    containers:
+      nodeSelector:
+        kubernetes.io/hostname: ip-192-168-30-245.ec2.internal
+      containers:
       - name: nginx
         image: nginx:latest
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx
-spec:
-  selector:
-    purpose: tolerations-demo
-    project: roboshop
-  ports:
-    - protocol: TCP
-      port: 80 # service port
-      targetPort: 80 # container port
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-headles
-spec:
-  # if a service clusterIP then it is called as headless service
-  clusterIP: None
-  selector:
-    purpose: tolerations-demo
-    project: roboshop
-  ports:
-    - protocol: TCP
-      port: 80 # service port
-      targetPort: 80 # container port
-      
+      tolerations:
+      - key: "project"
+        operator: "Equal"
+        value: "roboshop"
+        effect: "NoSchedule"
