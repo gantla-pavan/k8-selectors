@@ -24,7 +24,7 @@ spec:
     spec:
     node-selector:  
     kubernetes.io/hostname: ip-192-168-4-212.ec2.internal
-      containers:
+    containers:
       - name: nginx
         image: nginx:latest
 ---
