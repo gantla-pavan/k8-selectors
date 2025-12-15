@@ -32,5 +32,3 @@ spec:
         operator: "Equal"
         value: "roboshop"
         effect: "NoSchedule"
-
-
